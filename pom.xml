@@ -217,220 +217,39 @@
   <!-- GWT BOM -->
   <dependencyManagement>
     <dependencies>
-        <dependency>
-            <groupId>tech.jhipster</groupId>
-            <artifactId>jhipster-dependencies</artifactId>
-            <version>${jhipster-dependencies.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-            <exclusions>
-	          <exclusion>
-	            <groupId>javax.validation</groupId>
-	            <artifactId>validation-api</artifactId>
-	          </exclusion>
-	        </exclusions>
-        </dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-dependencies</artifactId>
-			<version>${spring-boot.version}</version>
-			<type>pom</type>
-			<scope>import</scope>
-		</dependency>
-
-		<!-- Jackson explicity -->
-		<!--
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>${jackson.version}</version>
-			<classifier>sources</classifier>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>${jackson.version}</version>
-			<classifier>sources</classifier>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.jaxrs</groupId>
-			<artifactId>jackson-jaxrs-json-provider</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.module</groupId>
-			<artifactId>jackson-module-jaxb-annotations</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>		
-		-->
-		
-	  <!-- Validatin api -->
-      <dependency>
-        <groupId>jakarta.validation</groupId>
-        <artifactId>jakarta.validation-api</artifactId>
-        <version>${jakarta.validation-api.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>jakarta.validation</groupId>
-        <artifactId>jakarta.validation-api</artifactId>
-        <version>${jakarta.validation-api.version}</version>
-        <classifier>sources</classifier>
-      </dependency>
-
-	  <!-- hibernate validation -->
-      <dependency>
-        <groupId>org.hibernate.validator</groupId>
-        <artifactId>hibernate-validator</artifactId>
-        <version>${hibernate-validator.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.hibernate.validator</groupId>
-        <artifactId>hibernate-validator</artifactId>
-        <version>${hibernate-validator.version}</version>
-        <classifier>sources</classifier>
-      </dependency>
-
-      <dependency>
-        <groupId>de.knightsoft-net</groupId>
-        <artifactId>gwt-bean-validators</artifactId>
-        <version>${gwt-bean-validators.version}</version>
-      </dependency>
-
       <dependency>
         <groupId>com.google.gwt</groupId>
         <artifactId>gwt</artifactId>
         <version>${gwt.version}</version>
         <type>pom</type>
         <scope>import</scope>
-        <exclusions>
-          <exclusion>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-          </exclusion>
-        </exclusions>
       </dependency>
+
       <dependency>
-        <groupId>com.google.gwt</groupId>
-        <artifactId>gwt-servlet</artifactId>
-        <version>${gwt.version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-          </exclusion>
-        </exclusions>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
       </dependency>
-      <dependency>
-        <groupId>com.google.gwt</groupId>
-        <artifactId>gwt-user</artifactId>
-        <version>${gwt.version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      
+
+
       <dependency>
         <groupId>org.gwtproject.editor</groupId>
         <artifactId>gwt-editor</artifactId>
         <version>${gwt-editor.version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-          </exclusion>
-        </exclusions>        
       </dependency>
       <dependency>
         <groupId>org.gwtproject.editor</groupId>
         <artifactId>gwt-editor-processor</artifactId>
         <version>${gwt-editor.version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-          </exclusion>
-        </exclusions>        
       </dependency>
 
       <dependency>
         <groupId>org.gwtproject.regexp</groupId>
         <artifactId>gwt-regexp</artifactId>
-        <version>${gwt-regexp.version}</version>
-        <exclusions>
-          <exclusion>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-          </exclusion>
-        </exclusions>        
+        <version>1.0.0-RC1</version>
       </dependency>
-           
-      <dependency>
-        <groupId>javax.servlet</groupId>
-        <artifactId>javax.servlet-api</artifactId>
-        <version>${javax.servlet-api.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.fusesource.restygwt</groupId>
-        <artifactId>restygwt</artifactId>
-        <version>${restygwt.version}</version>
-      </dependency>
-      
-      <dependency>
-        <groupId>javax.ws.rs</groupId>
-        <artifactId>javax.ws.rs-api</artifactId>
-        <version>${javax.ws.rs.version}</version>
-      </dependency>
-     
-      <dependency>
-        <groupId>com.github.nmorel.gwtjackson</groupId>
-        <artifactId>gwt-jackson</artifactId>
-        <version>${gwt-jackson.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>com.github.nmorel.gwtjackson</groupId>
-        <artifactId>gwt-jackson-remotelogging</artifactId>
-        <version>${gwt-jackson.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava</artifactId>
-        <version>${guava.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.google.guava</groupId>
-        <artifactId>guava-gwt</artifactId>
-        <version>${guava.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>com.google.code.findbugs</groupId>
-        <artifactId>jsr305</artifactId>
-        <version>3.0.2</version>
-      </dependency>
-
-	  <!-- NALU -->
 
       <dependency>
         <groupId>com.github.nalukit</groupId>
@@ -493,55 +312,7 @@
             <version>${maven-compiler-plugin.version}</version>
             <configuration>
             	<source>${maven.compiler.source}</source>
-            	<target>${maven.compiler.target}</target>             
-	            <annotationProcessorPaths>
-	                <path>
-	                    <groupId>org.springframework.boot</groupId>
-	                    <artifactId>spring-boot-configuration-processor</artifactId>
-	                    <version>${spring-boot.version}</version>
-	                </path>
-	                <path>
-	                    <groupId>org.mapstruct</groupId>
-	                    <artifactId>mapstruct-processor</artifactId>
-	                    <version>${mapstruct.version}</version>
-	                </path>
-	                <path>
-	                    <groupId>org.glassfish.jaxb</groupId>
-	                    <artifactId>jaxb-runtime</artifactId>
-	                    <version>${jaxb-runtime.version}</version>
-	                </path>
-	                <!-- jhipster-needle-maven-add-annotation-processor -->
-	            </annotationProcessorPaths>
-	            
-	            <compilerArgs>
-					<arg>--add-modules</arg>
-					<arg>jdk.crypto.cryptoki</arg>
-					
-					<arg>--add-exports</arg>
-					<arg>jdk.crypto.cryptoki/sun.security.pkcs11.wrapper=ALL-UNNAMED</arg>		
-											
-					<arg>--add-opens</arg>
-					<arg>jdk.crypto.cryptoki/sun.security.pkcs11=ALL-UNNAMED</arg>
-					
-					<arg>--add-opens</arg>
-					<arg>java.base/jdk.internal.loader=ALL-UNNAMED</arg> 
-						
-					<arg>--add-exports</arg>
-					<arg>java.base/sun.nio.ch=ALL-UNNAMED</arg> 
-					
-					<arg>--add-opens</arg>
-					<arg>java.base/java.lang=ALL-UNNAMED</arg> 
-					
-					<arg>--add-opens</arg>
-					<arg>java.base/java.lang.reflect=ALL-UNNAMED</arg> 
-					
-					<arg>--add-opens</arg>
-					<arg>java.base/java.io=ALL-UNNAMED</arg> 
-					
-					<arg>--add-exports</arg>
-					<arg>jdk.unsupported/sun.misc=ALL-UNNAMED</arg>
-										
-				</compilerArgs>                                            
+            	<target>${maven.compiler.target}</target>
             </configuration>
         </plugin>
         <plugin>

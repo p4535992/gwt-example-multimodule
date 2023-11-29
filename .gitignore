@@ -223,3 +223,10 @@ fabric.properties
 .idea/httpRequests
 target
 *.info
+/.project
+/.settings
+/nalu-simple-app-example-client/.project
+/nalu-simple-app-example-client/.settings
+/nalu-simple-app-example-client/target
+/nalu-simple-app-example-client/.classpath
+/.gitignore

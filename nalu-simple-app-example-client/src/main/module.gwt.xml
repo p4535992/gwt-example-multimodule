@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.9.0//EN"
         "http://gwtproject.org/doctype/2.9.0/gwt-module.dtd">
-<module rename-to='WebdesktopApp'>
+<module rename-to="AhiApp">
  
   <!-- GTW XML D'ESEMPIO TROVATI SU INTERNET -->
   <!-- https://gist.github.com/branflake2267/7645e92dce295019fe85c4ba7b7b3fa2 -->
@@ -18,7 +18,7 @@
   <!--<inherits name='com.google.gwt.place.Place' />-->
   <!--<inherits name="com.google.gwt.inject.Inject" />--><!-- CAPIRE PERCHE' DA ERRORE -->
   <!--<inherits name="com.google.gwt.resources.Resources" />-->
-  <inherits name="com.google.gwt.precompress.Precompress"/>
+
   <!-- Gin -->
   <!--<inherits name="com.google.gwt.inject.Inject" />-->
 	
@@ -39,14 +39,16 @@
   <!--<inherits name='com.google.gwt.user.theme.dark.Dark'/>-->
     
   <!-- Inherit our applications main module. -->
+
+  <!-- Restygwt support -->
+  <!--
   <inherits name='de.knightsoftnet.validators.GwtBeanValidators' />
   <inherits name="com.google.common.collect.Collect" />
   <inherits name="com.google.common.io.Io" />
-
   <inherits name="org.fusesource.restygwt.RestyGWT" />
   <set-property name="restygwt.encodeDecode.useGwtJackson" value="true" />
-
   <inherits name="com.github.nmorel.gwtjackson.remotelogging.GwtJacksonRemoteLogging" />
+  -->
 
   <inherits name="com.google.gwt.logging.Logging" />
   <set-property name="gwt.logging.logLevel" value="FINE" /><!-- DEBUG, INFO, FINE -->
@@ -56,9 +58,11 @@
   <set-property name="gwt.logging.consoleHandler" value="ENABLED" />
   <set-property name="gwt.logging.simpleRemoteHandler" value="DISABLED" />
 
+  <!--
   <set-property name="compiler.stackMode" value="native,emulated" />
   <set-configuration-property name="compiler.emulatedStack.recordLineNumbers" value="true" />
   <set-configuration-property name="compiler.emulatedStack.recordFileNames" value="true" />
+  -->
   
   <!-- GXT INTEGRATION -->
   <inherits name='com.sencha.gxt.ui.GXT' />
@@ -83,10 +87,11 @@
   <!-- Normalizing Stylesheet -->
   <!-- <stylesheet src="reset.css" /> -->
   <!-- Details on how to migrate to GSS can be found at: http://goo.gl/tEQnmJ -->
+  <!--
   <set-configuration-property name="CssResource.enableGss" value="true" />
   <set-configuration-property name="CssResource.style" value="pretty" />
   <set-configuration-property name="CssResource.conversionMode" value="strict" />
-  
+  -->
   <!-- ELemental 2 -->
   <!--
   <inherits name="elemental2.core.Core" />
@@ -98,6 +103,8 @@
   <inherits name='com.github.nalukit.nalu.plugin.elemental2.NaluPluginElemental2'/>
   <inherits name='org.dominokit.rest.Rest'/>
   <inherits name='org.dominokit.domino.ui.DominoUI'/>
+
+  <inherits name="com.google.gwt.precompress.Precompress"/>
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.github.nalukit.nalu.simple.app.client.App'/>
