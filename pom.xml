@@ -32,58 +32,405 @@
   <description>Nalu example showing how to set up a basic Nalu project</description>
 
   <properties>
-    <domino.version>1.0.0</domino.version>
-    <domino.rest.version>1.0.0</domino.rest.version>
+    	<domino.version>1.0.0</domino.version>
+    	<domino.rest.version>1.0.0</domino.rest.version>
 
-    <gwt.version>2.10.0</gwt.version>
-    <gwt-editor.version>1.0.0-RC1</gwt-editor.version>
+	    <javax.ws.rs-api.version>2.1.5</javax.ws.rs-api.version>
+	    <nalu.version>2.12.4</nalu.version>
 
-    <javax.ws.rs-api.version>2.1.5</javax.ws.rs-api.version>
-    <nalu.version>2.12.4</nalu.version>
-    <spring-boot.version>2.7.4</spring-boot.version>
+		<servlet.context.path>./</servlet.context.path>  				
+		
+		<!-- Build properties -->
+        <maven.version>3.5.2</maven.version>
+        <java.version>11</java.version>
+        <node.version>v16.17.0</node.version>
+        <npm.version>8.19.1</npm.version>
 
-    <maven.compiler.source>11</maven.compiler.source>
-    <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+        <timestamp>${maven.build.timestamp}</timestamp>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <start-class>com.github.nalukit.nalu.simple.app.Application</start-class>
+        <argLine>-Djava.security.egd=file:/dev/./urandom -Xmx1G</argLine>
+        <m2e.apt.activation>jdt_apt</m2e.apt.activation>
+        <run.addResources>false</run.addResources>
+        <!-- These remain empty unless the corresponding profile is active -->
+        <profile.no-liquibase />
+        <profile.api-docs />
+        <profile.tls />
+        <profile.e2e />
 
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Dependency versions -->
+        <jhipster-dependencies.version>7.9.3</jhipster-dependencies.version>
+        <!-- The spring-boot version should match the one managed by
+        https://mvnrepository.com/artifact/tech.jhipster/jhipster-dependencies/${jhipster-dependencies.version} -->
+        <spring-boot.version>2.7.3</spring-boot.version>
+        <spring-boot-starter.version>${spring-boot.version}</spring-boot-starter.version>
+        <!-- The hibernate version should match the one managed by
+        https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies/${spring-boot.version} -->
+        <hibernate.version>5.4.33</hibernate.version>
+        <!-- The javassist version should match the one managed by
+        https://mvnrepository.com/artifact/org.hibernate/hibernate-core/${hibernate.version} -->
+        <javassist.version>3.27.0-GA</javassist.version>
+        <!-- The liquibase version should match the one managed by
+        https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies/${spring-boot.version} -->
+        <liquibase.version>4.6.1</liquibase.version>
+        <liquibase-hibernate5.version>4.6.1</liquibase-hibernate5.version>
+        <validation-api.version>2.0.1.Final</validation-api.version>
+        <jaxb-runtime.version>2.3.3</jaxb-runtime.version>
+        <archunit-junit5.version>0.22.0</archunit-junit5.version>
+        <mapstruct.version>1.5.2.Final</mapstruct.version>
+        <jackson-databind-nullable.version>0.2.3</jackson-databind-nullable.version>
+        <!-- Plugin versions -->
+        <maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
+        <maven-site-plugin.version>3.12.1</maven-site-plugin.version>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+        <maven-javadoc-plugin.version>3.4.1</maven-javadoc-plugin.version>
+        <maven-eclipse-plugin.version>2.10</maven-eclipse-plugin.version>
+        <maven-enforcer-plugin.version>3.1.0</maven-enforcer-plugin.version>
+        <maven-failsafe-plugin.version>3.0.0-M7</maven-failsafe-plugin.version>
+        <maven-jar-plugin.version>3.2.2</maven-jar-plugin.version>
+        <maven-idea-plugin.version>2.2.1</maven-idea-plugin.version>
+        <maven-resources-plugin.version>3.3.0</maven-resources-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
+        <maven-war-plugin.version>3.4.0</maven-war-plugin.version>
+        <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+        <checkstyle.version>10.3.2</checkstyle.version>
+        <nohttp-checkstyle.version>0.0.10</nohttp-checkstyle.version>
+        <frontend-maven-plugin.version>1.12.1</frontend-maven-plugin.version>
+        <checksum-maven-plugin.version>1.11</checksum-maven-plugin.version>
+        <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
+        <git-commit-id-plugin.version>5.0.0</git-commit-id-plugin.version>
+        <modernizer-maven-plugin.version>2.4.0</modernizer-maven-plugin.version>
+        <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
+        <jib-maven-plugin.version>3.2.1</jib-maven-plugin.version>
+        <jib-maven-plugin.image>eclipse-temurin:11-jre-focal</jib-maven-plugin.image>
+        <jib-maven-plugin.architecture>amd64</jib-maven-plugin.architecture>
+        <lifecycle-mapping.version>1.0.0</lifecycle-mapping.version>
+        <openapi-generator-maven-plugin.version>6.6.0</openapi-generator-maven-plugin.version>
+        <properties-maven-plugin.version>1.1.0</properties-maven-plugin.version>
+        <sonar-maven-plugin.version>3.9.1.2184</sonar-maven-plugin.version>
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+
+        <jaxb2-maven-plugin.version>2.5.0</jaxb2-maven-plugin.version><!-- 3.1.0 -->
+
+        <!-- jhipster-needle-maven-property -->
+
+        <!-- OTHER DEPENDENCY -->
+        
+        <!-- utility webdesktop -->
+        <tomcat8.version>8.5.50</tomcat8.version>
+        <!-- GWT UTILITY -->
+		<gwt.version>2.9.0</gwt.version>
+		<gwt-editor.version>1.0.0-RC1</gwt-editor.version>
+		<gwt-regexp.version>1.0.0-RC1</gwt-regexp.version>
+		<gxt.version>4.1.0</gxt.version>
+		<json-simple.version>1.1.1</json-simple.version>
+		<zebra.sdk-api.version>1.0</zebra.sdk-api.version>
+		<googleGin.version>2.1.2</googleGin.version>
+		<webappDirectory>${project.build.directory}/${project.artifactId}-${project.version}</webappDirectory>
+		<!-- GWT: App Engine Instances Version (GAE) -->
+	    <gae.app.instance.version>7.6.0-SNAPSHOT</gae.app.instance.version>
+	    <gae.version>2.0.22</gae.version><!-- 1.9.89 -->
+	    <appengine-maven-plugin.version>1.9.84</appengine-maven-plugin.version>
+	    <appengine-maven-plugin-new.version>2.5.0</appengine-maven-plugin-new.version>
+	    <!-- GWT: RestyGWT -->
+	    <resteasy.version>5.0.0.Final</resteasy.version><!-- 4.6.2.Final -->
+	    <gwt-jackson.version>0.15.4</gwt-jackson.version>
+	    <jackson.version>2.13.3</jackson.version><!-- gwt-jackson 0.15.4 arriva fino alla 2.16.0 si prende quella collegata allo spring boot la 2.13.3 ma il gwt scazza.. si usa allora 2.12.4 -->
+	    <restygwt.version>2.2.7</restygwt.version>
+	    <!-- GWT: altro... -->
+	    <hibernate-validator.version>6.1.5.Final</hibernate-validator.version>
+	    <gwt-bean-validators.version>1.3.4</gwt-bean-validators.version>
+	    <com-googlecode-objectify.version>6.0.9</com-googlecode-objectify.version>
+	    <javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+        <guava.version>30.1.1-jre</guava.version>
+        <slf4j.version>1.7.36</slf4j.version>
+        
+		<!-- utility spring boot -->
+		<!-- bug https://github.com/springfox/springfox/issues/2776 -->
+		<!--<io.springfox.version>2.9.2</io.springfox.version>--><!-- 2.9.2 , 2.10.5 , 3.0.0-->
+		<!-- bug https://github.com/springfox/springfox/issues/2528 -->
+		<io.swagger.swagger.version>1.6.4</io.swagger.swagger.version><!-- old 1.5.21, very new 1.6.4 -->
+		<springdoc-openapi.version>1.6.11</springdoc-openapi.version><!-- 1.2.30, 1.4.7 -->
+		<io.swagger.core.v3.version>2.1.11</io.swagger.core.v3.version><!-- 2.2.8 -->
+		<com.google.code.findbugs.annotations.version>3.0.1</com.google.code.findbugs.annotations.version>
+		<modelmapper.version>2.3.3</modelmapper.version>
+		<!-- utility retrofit -->
+		<retrofit.version>2.9.0</retrofit.version>
+		<okhttp.version>4.9.0</okhttp.version><!-- 4.8.0 -->
+		<okio.version>2.8.0</okio.version><!-- 2.7.0 -->
+		<org.apache.oltu.oauth2.client.version>1.0.1</org.apache.oltu.oauth2.client.version>
+		<gson-fire.version>1.8.4</gson-fire.version>
+		<!-- utility gateway jwt -->
+		<spring-cloud.version>Hoxton.SR2</spring-cloud.version>	
+		<!--utility xsd -->
+		<!--jtexttime.version>1.2.2</jtexttime.version-->
+		<cxf.version>3.5.0</cxf.version>
+
+		<!-- utility java per xml packages -->
+	    <!-- old library -->
+	    <jaxb-runtime.version>2.3.2</jaxb-runtime.version>
+	    <jaxb-core.version>4.0.3</jaxb-core.version>
+	    <jaxb-api.version>2.3.0</jaxb-api.version>
+	    <jaxb-xjc.version>4.0.3</jaxb-xjc.version>
+	    <jaxb-impl.version>4.0.3</jaxb-impl.version>
+	    <jaxb-runtime.version>2.3.2</jaxb-runtime.version>
+	    
+	    <jaxws-api.version>2.3.1</jaxws-api.version>
+	    <jsr181-api.version>1.0-MR1</jsr181-api.version>
+	    <javax.jws-api.version>1.1</javax.jws-api.version>
+	    <jaf-api.version>1.2.0</jaf-api.version> <!-- is replaced with javax.activation-api -->
+	    <javax.activation-api.version>1.2.0</javax.activation-api.version>
+	    <javax.ws.rs.version>2.1.1</javax.ws.rs.version> <!-- is replaced with jakarta.ws.rs-api.version -->
+	    <javax.validation-api.version>2.0.1.Final</javax.validation-api.version>
+	    <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
+	    
+	    <!--new jakarta library -->
+	    <jakarta.xml.bind-api.version>4.0.0</jakarta.xml.bind-api.version>
+	    <jakarta.ws.rs-api.version>3.1.0</jakarta.ws.rs-api.version>
+	    <jakarta.validation-api.version>2.0.2</jakarta.validation-api.version>
+		<!-- other xml library -->
+        <xmlsec.version>1.5.8</xmlsec.version>
+		<xml-security.version>1.4.1</xml-security.version>
+		<xmlsec-santuario.version>2.3.0</xmlsec-santuario.version>	 	
+	    <xercesImpl.version>2.12.2</xercesImpl.version>
+		<org.dom4j.version>2.1.1</org.dom4j.version>
+		<wss4j.version>1.6.19</wss4j.version>
+		<xmpbox.version>2.0.24</xmpbox.version>
+		<ogce.xpp3.version>1.1.6</ogce.xpp3.version>
+		<xstream.version>1.3.1</xstream.version>
+		<zxing.version>3.2.0</zxing.version>
+		<wsdl4j.version>1.6.3</wsdl4j.version>
+		<xalan.version>2.7.2</xalan.version>
+		<xbean-spring.version>4.20</xbean-spring.version>
+		<xml-resolver.version>1.2</xml-resolver.version>
+		<xmlbeans.version>3.1.0</xmlbeans.version>
+		<xmlschema-core.version>2.3.0</xmlschema-core.version>
+		<xmpcore.version>6.1.11</xmpcore.version>
+		<xpp3.version>1.1.3.4.O</xpp3.version>
+
   </properties>
 
   <!-- GWT BOM -->
   <dependencyManagement>
     <dependencies>
+        <dependency>
+            <groupId>tech.jhipster</groupId>
+            <artifactId>jhipster-dependencies</artifactId>
+            <version>${jhipster-dependencies.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+            <exclusions>
+	          <exclusion>
+	            <groupId>javax.validation</groupId>
+	            <artifactId>validation-api</artifactId>
+	          </exclusion>
+	        </exclusions>
+        </dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-dependencies</artifactId>
+			<version>${spring-boot.version}</version>
+			<type>pom</type>
+			<scope>import</scope>
+		</dependency>
+
+		<!-- Jackson explicity -->
+		<!--
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
+			<classifier>sources</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson.version}</version>
+			<classifier>sources</classifier>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-jaxb-annotations</artifactId>
+			<version>${jackson.version}</version>
+		</dependency>		
+		-->
+		
+	  <!-- Validatin api -->
       <dependency>
-        <groupId>org.gwtproject</groupId>
+        <groupId>jakarta.validation</groupId>
+        <artifactId>jakarta.validation-api</artifactId>
+        <version>${jakarta.validation-api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.validation</groupId>
+        <artifactId>jakarta.validation-api</artifactId>
+        <version>${jakarta.validation-api.version}</version>
+        <classifier>sources</classifier>
+      </dependency>
+
+	  <!-- hibernate validation -->
+      <dependency>
+        <groupId>org.hibernate.validator</groupId>
+        <artifactId>hibernate-validator</artifactId>
+        <version>${hibernate-validator.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.hibernate.validator</groupId>
+        <artifactId>hibernate-validator</artifactId>
+        <version>${hibernate-validator.version}</version>
+        <classifier>sources</classifier>
+      </dependency>
+
+      <dependency>
+        <groupId>de.knightsoft-net</groupId>
+        <artifactId>gwt-bean-validators</artifactId>
+        <version>${gwt-bean-validators.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.google.gwt</groupId>
         <artifactId>gwt</artifactId>
         <version>${gwt.version}</version>
         <type>pom</type>
         <scope>import</scope>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
-
       <dependency>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-dependencies</artifactId>
-        <version>${spring-boot.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
+        <groupId>com.google.gwt</groupId>
+        <artifactId>gwt-servlet</artifactId>
+        <version>${gwt.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+          </exclusion>
+        </exclusions>
       </dependency>
-
-
+      <dependency>
+        <groupId>com.google.gwt</groupId>
+        <artifactId>gwt-user</artifactId>
+        <version>${gwt.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+      
       <dependency>
         <groupId>org.gwtproject.editor</groupId>
         <artifactId>gwt-editor</artifactId>
         <version>${gwt-editor.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+          </exclusion>
+        </exclusions>        
       </dependency>
       <dependency>
         <groupId>org.gwtproject.editor</groupId>
         <artifactId>gwt-editor-processor</artifactId>
         <version>${gwt-editor.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+          </exclusion>
+        </exclusions>        
       </dependency>
 
       <dependency>
         <groupId>org.gwtproject.regexp</groupId>
         <artifactId>gwt-regexp</artifactId>
-        <version>1.0.0-RC1</version>
+        <version>${gwt-regexp.version}</version>
+        <exclusions>
+          <exclusion>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+          </exclusion>
+        </exclusions>        
       </dependency>
+           
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>${javax.servlet-api.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.fusesource.restygwt</groupId>
+        <artifactId>restygwt</artifactId>
+        <version>${restygwt.version}</version>
+      </dependency>
+      
+      <dependency>
+        <groupId>javax.ws.rs</groupId>
+        <artifactId>javax.ws.rs-api</artifactId>
+        <version>${javax.ws.rs.version}</version>
+      </dependency>
+     
+      <dependency>
+        <groupId>com.github.nmorel.gwtjackson</groupId>
+        <artifactId>gwt-jackson</artifactId>
+        <version>${gwt-jackson.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.github.nmorel.gwtjackson</groupId>
+        <artifactId>gwt-jackson-remotelogging</artifactId>
+        <version>${gwt-jackson.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava-gwt</artifactId>
+        <version>${guava.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>com.google.code.findbugs</groupId>
+        <artifactId>jsr305</artifactId>
+        <version>3.0.2</version>
+      </dependency>
+
+	  <!-- NALU -->
 
       <dependency>
         <groupId>com.github.nalukit</groupId>
@@ -140,14 +487,62 @@
     </plugins>
     <pluginManagement>
       <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.10.1</version>
-          <configuration>
-            <source>${maven.compiler.source}</source>
-            <target>${maven.compiler.target}</target>
-          </configuration>
+		<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>${maven-compiler-plugin.version}</version>
+            <configuration>
+            	<source>${maven.compiler.source}</source>
+            	<target>${maven.compiler.target}</target>             
+	            <annotationProcessorPaths>
+	                <path>
+	                    <groupId>org.springframework.boot</groupId>
+	                    <artifactId>spring-boot-configuration-processor</artifactId>
+	                    <version>${spring-boot.version}</version>
+	                </path>
+	                <path>
+	                    <groupId>org.mapstruct</groupId>
+	                    <artifactId>mapstruct-processor</artifactId>
+	                    <version>${mapstruct.version}</version>
+	                </path>
+	                <path>
+	                    <groupId>org.glassfish.jaxb</groupId>
+	                    <artifactId>jaxb-runtime</artifactId>
+	                    <version>${jaxb-runtime.version}</version>
+	                </path>
+	                <!-- jhipster-needle-maven-add-annotation-processor -->
+	            </annotationProcessorPaths>
+	            
+	            <compilerArgs>
+					<arg>--add-modules</arg>
+					<arg>jdk.crypto.cryptoki</arg>
+					
+					<arg>--add-exports</arg>
+					<arg>jdk.crypto.cryptoki/sun.security.pkcs11.wrapper=ALL-UNNAMED</arg>		
+											
+					<arg>--add-opens</arg>
+					<arg>jdk.crypto.cryptoki/sun.security.pkcs11=ALL-UNNAMED</arg>
+					
+					<arg>--add-opens</arg>
+					<arg>java.base/jdk.internal.loader=ALL-UNNAMED</arg> 
+						
+					<arg>--add-exports</arg>
+					<arg>java.base/sun.nio.ch=ALL-UNNAMED</arg> 
+					
+					<arg>--add-opens</arg>
+					<arg>java.base/java.lang=ALL-UNNAMED</arg> 
+					
+					<arg>--add-opens</arg>
+					<arg>java.base/java.lang.reflect=ALL-UNNAMED</arg> 
+					
+					<arg>--add-opens</arg>
+					<arg>java.base/java.io=ALL-UNNAMED</arg> 
+					
+					<arg>--add-exports</arg>
+					<arg>jdk.unsupported/sun.misc=ALL-UNNAMED</arg>
+										
+				</compilerArgs>                                            
+            </configuration>
         </plugin>
         <plugin>
           <groupId>net.ltgt.gwt.maven</groupId>
@@ -218,4 +613,41 @@
     <module>nalu-simple-app-example-client</module>
     <module>nalu-simple-app-example-server</module>
   </modules>
+  
+   <profiles>
+
+		<profile>
+			<id>Toolchains</id>
+	
+			<activation>
+				<file>
+					<exists>${user.home}/.m2/toolchains.xml</exists>
+				</file>
+			</activation>
+	
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-toolchains-plugin</artifactId>
+						<version>3.0.0</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>toolchain</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<toolchains>
+								<jdk>
+									<version>${maven.compiler.target}</version>
+								</jdk>
+							</toolchains>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+    </profiles>
 </project>

@@ -34,13 +34,103 @@
   <packaging>gwt-app</packaging>
 
   <dependencies>
+    <!-- ==================== -->
+    <!-- GWT SUPPORT                 -->
+    <!-- ==================== -->
+    	  
+    <!-- Validatin api -->
     <dependency>
-      <groupId>org.gwtproject</groupId>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+      <classifier>sources</classifier>
+    </dependency>
+
+    <!-- hibernate validation -->
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <classifier>sources</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>de.knightsoft-net</groupId>
+      <artifactId>gwt-bean-validators</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.gwtproject</groupId>
+      <groupId>com.google.gwt</groupId>
       <artifactId>gwt-dev</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.gwtproject.editor</groupId>
+      <artifactId>gwt-editor</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.gwtproject.editor</groupId>
+      <artifactId>gwt-editor-processor</artifactId>
+    </dependency> 
+	
+    <dependency>
+      <groupId>org.fusesource.restygwt</groupId>
+      <artifactId>restygwt</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>javax.ws.rs</groupId>
+      <artifactId>javax.ws.rs-api</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.github.nmorel.gwtjackson</groupId>
+      <artifactId>gwt-jackson-remotelogging</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava-gwt</artifactId>
+    </dependency>
+    
+	<!-- ================================ -->
+	<!-- GXT SUPPORT  -->
+	<!-- ================================ -->
+	
+    <dependency>
+      <groupId>com.sencha.gxt</groupId>
+      <artifactId>gxt</artifactId>
+      <version>${gxt.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.sencha.gxt</groupId>
+      <artifactId>gxt-chart</artifactId>
+      <version>${gxt.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <!-- Neptune Theme -->
+    <dependency>
+      <groupId>com.sencha.gxt</groupId>
+      <artifactId>gxt-theme-neptune</artifactId>
+      <version>${gxt.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <!-- Triton Theme -->
+    <dependency>
+      <groupId>com.sencha.gxt</groupId>
+      <artifactId>gxt-theme-triton</artifactId>
+      <version>${gxt.version}</version>
+      <scope>compile</scope>
     </dependency>
 
     <dependency>

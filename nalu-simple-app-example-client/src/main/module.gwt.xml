@@ -1,39 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-  ~ Copyright (C) 2018 - 2021 Frank Hossfeld <frank.hossfeld@googlemail.com>
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~  you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~ http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  ~
-  -->
-
-<!--
-  When updating your version of GWT, you should also update this DTD reference,
-  so that your app can take advantage of the latest GWT module capabilities.
--->
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.9.0//EN"
         "http://gwtproject.org/doctype/2.9.0/gwt-module.dtd">
-<module rename-to="AhiApp">
-  <!-- Inherit the core Web Toolkit stuff.                        -->
-  <inherits name='com.google.gwt.user.User'/>
+<module rename-to='WebdesktopApp'>
+ 
+  <!-- GTW XML D'ESEMPIO TROVATI SU INTERNET -->
+  <!-- https://gist.github.com/branflake2267/7645e92dce295019fe85c4ba7b7b3fa2 -->
+  <!-- https://github.com/sencha/sandbox-ewc-public/blob/master/sandbox-gxt-ewc/src/main/java/com/projectname/project/GxtEwcProject.gwt.xml -->
+  <!-- https://github.com/tbroyer/gwt-maven-plugin/issues/65 -->
+  <!-- https://github.com/resty-gwt/gwt-jackson/blob/master/examples/restygwt/src/main/java/com/github/nmorel/gwtjackson/hello/HelloRestyGWT.gwt.xml -->
+  <!-- https://github.com/freddyboucher/gwt-storage-objectify/blob/master/gwt-storage-objectify-client/src/main/resources/com/project/App.gwt.xml -->
+  
+  <!-- Inherit the core Web Toolkit stuff. -->
+  <inherits name='com.google.gwt.user.User' />
+  <inherits name="com.google.gwt.i18n.I18N" />
+  <!-- <inherits name="com.google.gwt.user.Debug"/> -->
+  <!--<inherits name='com.google.gwt.activity.Activity' />-->
+  <!--<inherits name='com.google.gwt.place.Place' />-->
+  <!--<inherits name="com.google.gwt.inject.Inject" />--><!-- CAPIRE PERCHE' DA ERRORE -->
+  <!--<inherits name="com.google.gwt.resources.Resources" />-->
+  <inherits name="com.google.gwt.precompress.Precompress"/>
+  <!-- Gin -->
+  <!--<inherits name="com.google.gwt.inject.Inject" />-->
+	
+  <!-- French language, independent of country -->
+  <extend-property name="locale" values="it" />
+	
+  <!-- English language, independent of country -->
+  <extend-property name="locale" values="en" />
+	
+  <set-property-fallback name="locale" value="it" />
+  
+  <!-- SI USA IL THEME DI GXT -->
+  <!-- Inherit the default GWT style sheet. You can change -->
+  <!-- the theme of your GWT application by uncommenting -->
+  <!-- any one of the following lines. -->  
+  <inherits name='com.google.gwt.user.theme.clean.Clean' />
+  <!--<inherits name='com.google.gwt.user.theme.chrome.Chrome'/>-->
+  <!--<inherits name='com.google.gwt.user.theme.dark.Dark'/>-->
+    
+  <!-- Inherit our applications main module. -->
+  <inherits name='de.knightsoftnet.validators.GwtBeanValidators' />
+  <inherits name="com.google.common.collect.Collect" />
+  <inherits name="com.google.common.io.Io" />
 
+  <inherits name="org.fusesource.restygwt.RestyGWT" />
+  <set-property name="restygwt.encodeDecode.useGwtJackson" value="true" />
+
+  <inherits name="com.github.nmorel.gwtjackson.remotelogging.GwtJacksonRemoteLogging" />
+
+  <inherits name="com.google.gwt.logging.Logging" />
+  <set-property name="gwt.logging.logLevel" value="FINE" /><!-- DEBUG, INFO, FINE -->
+  <set-property name="gwt.logging.enabled" value="TRUE" /><!-- Importante tutto maiuscolo o TRUE o FALSE -->
+  <set-property name="gwt.logging.systemHandler" value="ENABLED" />
+  <set-property name="gwt.logging.developmentModeHandler" value="ENABLED" />
+  <set-property name="gwt.logging.consoleHandler" value="ENABLED" />
+  <set-property name="gwt.logging.simpleRemoteHandler" value="DISABLED" />
+
+  <set-property name="compiler.stackMode" value="native,emulated" />
+  <set-configuration-property name="compiler.emulatedStack.recordLineNumbers" value="true" />
+  <set-configuration-property name="compiler.emulatedStack.recordFileNames" value="true" />
+  
+  <!-- GXT INTEGRATION -->
+  <inherits name='com.sencha.gxt.ui.GXT' />
+  <!--<inherits name='com.sencha.gxt.examples.resources.Resources' />--><!-- CAPIRE PERCHE' DA ERRORE -->
+  <!--<inherits name='com.sencha.gxt.chart.Chart' /> -->
+
+  <!-- GXT Testing : test driver -->
+  <!--<inherits name="org.senchalabs.gwt.gwtdriver.gxt.TestableGXT" />-->
+  
+  <!-- Include all base GXT themes and set the app to check for url params to activate a different one -->
+  <!--  <inherits name='com.google.gwt.user.theme.standard.Standard' />  -->
+  <!--  <inherits name="com.google.gwt.user.theme.dark.Dark"/> -->
+  <!--  <inherits name="com.sencha.gxt.theme.triton.Theme" /> -->
+  <inherits name="com.sencha.gxt.theme.blue.Blue" />
+  <set-property name="gxt.theme" value="blue" />
+  
+  <!-- Logging options -->
+  <!-- https://docs.sencha.com/gxt/4.x/guides/concepts/Logging.html -->
+  <set-property name="gxt.logging.enabled" value="true" /><!-- Importante tutto minuscolo o true o false -->    
+    
+  <!-- CSS SUPPORT -->
+  <!-- Normalizing Stylesheet -->
+  <!-- <stylesheet src="reset.css" /> -->
+  <!-- Details on how to migrate to GSS can be found at: http://goo.gl/tEQnmJ -->
+  <set-configuration-property name="CssResource.enableGss" value="true" />
+  <set-configuration-property name="CssResource.style" value="pretty" />
+  <set-configuration-property name="CssResource.conversionMode" value="strict" />
+  
+  <!-- ELemental 2 -->
+  <!--
+  <inherits name="elemental2.core.Core" />
+  <inherits name="elemental2.dom.Dom" />
+  -->
+  
   <!-- Other module inherits                                      -->
   <inherits name='com.github.nalukit.nalu.Nalu'/>
   <inherits name='com.github.nalukit.nalu.plugin.elemental2.NaluPluginElemental2'/>
   <inherits name='org.dominokit.rest.Rest'/>
   <inherits name='org.dominokit.domino.ui.DominoUI'/>
-
-  <inherits name="com.google.gwt.precompress.Precompress"/>
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.github.nalukit.nalu.simple.app.client.App'/>
@@ -43,5 +107,38 @@
   <source path='client'/>
   <source path='module'/>
   <source path='shared'/>
+  
+  <!-- Last properties for the compilation/permutation -->
+  <set-configuration-property name="xsiframe.failIfScriptTag" value="FALSE"/>
+	
+  <!-- 
+	GWT user.agent values are 
+	gecko1_8: Used for FireFox and IE 11
+	safari: Used for everything based on WebKit (Safari, Chrome, Edge, Opera, ...)
+  -->
+	
+  <set-property name="user.agent" value="safari" />
+  <set-property name="gxt.user.agent" value="chrome" />
+  <set-property name="gxt.device" value="desktop" />
+	
+	
+  <!-- collapse properties for fewer permutations -->
+  <!--
+	  <collapse-property name="gxt.device" values="phone, tablet" />
+	  <collapse-property name="gxt.theme" values="blue" />
+	  <collapse-property name="gxt.user.agent" values="air, safari*, chrome*, gecko*, ie11" />
+	  <collapse-property name="user.agent" values="safari*, gecko*" />
+	  <collapse-property name="gxt.user.agent" values="ie8, ie9, ie10" />
+	  <collapse-property name="user.agent" values="ie*" />
+  -->
+  <!-- http://www.g-widgets.com/2017/06/29/quick-tip-debugging-a-gwt-application-using-chrome-dev-tools/ -->
+  <!-- <set-property name="compiler.useSourceMaps" value="true" /> -->
 
+  <!-- 
+	<extend-property name="locale" values="it" />
+	<extend-property name="locale" values="en" />
+	<set-property name="locale" value="it,en" />
+	<set-property-fallback name="locale" value="it" />
+  -->
+  
 </module>
